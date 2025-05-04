@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+      body {
+        margin: 0;
+        padding: 0 24px;
+
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+        font-weight: 400;
+
+        background-color: #fff;
+        color: #000;
+      }
+
+      p,
+      h1,
+      h2,
+      h3,
+      h4,
+      span {
+        margin: 0;
+        padding: 0;
+      }
+
+      table {
+        width: 100%;
+      }
+
+      hr {
+        border: none;
+        height: 2px;
+        background-color: rgba(0, 0, 0, 0.06);
+        margin: 8px 0;
+      }
+
+      a {
+        color: rgba(218, 41, 28, 1);
+      }
+
+      table.with-row-spacing td {
+        padding: 2px 0;
+      }
+
+      .container {
+        background-color: skyblue;
+      }
+
+      /* Utils*/
+
+      .text-capitalize {
+        text-transform: capitalize;
+      }
+
+      .text-lg {
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0%;
+      }
+
+      .text-md {
+        font-size: 12px;
+        line-height: 20px;
+      }
+
+      .text-bold {
+        font-weight: 700;
+      }
+
+      .text-semi-bold {
+        font-weight: 600;
+      }
+
+      .text-gray {
+        color: #5e6470 !important;
+      }
+
+      .colon-before::before {
+        content: ": ";
+      }
+
+      .tag {
+        padding: 1px 8px;
+        border-radius: 4px;
+      }
+
+      .tag-green {
+        color: #52c41a;
+        border: 1px solid #b7eb8f;
+        background-color: #f6ffed;
+      }
+
+      .tag-red {
+        color: #f5222d;
+        border: 1px solid #ffa39e;
+        background-color: #fff1f0;
+      }
+
+      .tag-gold {
+        color: #faad14;
+        border: 1px solid #ffe58f;
+        background-color: #fffbe6;
+      }
+
+      .tag-magenta {
+        color: #eb2f96;
+        border: 1px solid #ffadd2;
+        background-color: #fff0f6;
+      }
+
+      .tag-volcano {
+        color: #fa541c;
+        border: 1px solid #ffbb96;
+        background-color: #fff2e8;
+      }
+
+      /* Custom Style */
+      .qr-image {
+        width: 160px;
+        height: 160px;
+        object-fit: fill;
+      }
+
+      .box-file-title {
+        padding: 16px 12px;
+        border-radius: 8px;
+        background-color: rgba(0, 0, 0, 0.02);
+      }
+
+      .box-file-title .icon {
+        width: fit-content;
+        background-color: #fff;
+        border-radius: 4px;
+        padding: 5px;
+      }
+
+      .box-file-title .icon img {
+        height: 32px;
+      }
+
+      .detail-content {
+        margin-top: 24px;
+      }
+
+      .detail-content table tr td:nth-child(1) {
+        width: 40%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <table>
+        <tr>
+          <td width="40%" style="text-align: center">
+            <img
+              class="qr-image"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_tizRcHwrkbTd28zdkMzJ5z8RLkXQoTdU6Q&s"
+            />
+            <div style="margin-top: 8px">
+              <span class="text-gray">Exp. {expired_date}</span>
+            </div>
+          </td>
+          <td>
+            <div class="box-file-title">
+              <table>
+                <tr>
+                  <td style="width: 10%">
+                    <div class="icon">
+                      <img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAACjklEQVR4Ae3dP07cQBiG8ZcQiS4nSBEpHSegSM0JKKi3S0cRKV36dEgpIqWgTsEJOAEnoKbgBHsCZoTRggT7xx7vzDfv85M+gagQ+8DY3rGRAAAAAAAAAAAAAAAAAAAAAMR2oPou0izSfFLbHtJcp7lURw5V168039McqX050JPh81t1onYAfxTjxX+pqwhqB/BTMXUTwQdhrIthQiOAacJH8FFtWqa5036daJznAEKeHbQaQH7xz7Vf9+98Pb+wZ2k+631hI2AJ2Cyf/58PH9cJuRwQwHa6jYAAttdlBASwm+4iIIDddRUBAYzTTQQEMF4XERDANOEjIIDpQkdAAGWEjYAAygkZAQGUFS4CAigvVAQEMI9dIlioIgKYzy4RVEMA89omgqrb4VvdENKSU63fDLKNvHn0TA0igM1Oh+kSS4A5AljZdLDWJQJYuZEhAli5kuFfAQ4CV55P2fJ5+dh7BNaZeiYxCwJ4LUfwQ/P4r3nCmoQlwBwBmCMAcwRgjgDMEYA5AjAX9TrAQpV30rzhaphQogZQ4j360vL3FC4AlgBzBGCOAMxFDWApFBH1IDC/Y9faw6VDRhk1gKX4K1AExwDmCMAcAZgjAHOR9wSWuBRseS/AS1ED+Kcyt2vlAL7JWNQloNQ1gCa3au8TxwDmCMAcAZiLehCYH7hQYv22v5wcNYBLdfYfPGthCTBHAOYIwBwBmCMAcwRgjgDMEYA5AjBHAOYIwBwBmCMAcwRgjgDMEYA5AjBHAOZa3RJ2rKena/fkWA06UF33QvZFlbAEmCMAc7UD4DEvlX8GtQMI92TNGVyrokPVle/wyXf6fk1zJC/5N/9vmt8CAAAAAAAAAAAAAAAAAAAAgNEeAf1TX6KXnhtsAAAAAElFTkSuQmCC"
+                      />
+                    </div>
+                  </td>
+                  <td>
+                    <span class="text-lg text-semi-bold">
+                      Sarana Angkut Bongkar/Muat - Tidak Memiliki Dokumen
+                      Kepabeanan
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div style="margin-top: 12px">
+              <table class="with-row-spacing">
+                <tr>
+                  <td class="text-semi-bold" width="40%">No Tiket Akses</td>
+                  <td>
+                    <span class="text-gray colon-before"
+                      >{ticket_access_number}</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-semi-bold" width="40%">Tanggal Permohonan</td>
+                  <td>
+                    <span class="text-gray colon-before"
+                      >{ticket_created_at}</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="text-semi-bold" width="40%">Nama Perusahaan</td>
+                  <td>
+                    <span class="text-gray colon-before"> {company_name} </span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="detail-content">
+      <h2 class="text-md text-gray">Detail Informasi</h2>
+      <hr />
+      <table class="with-row-spacing">
+        <tr>
+          <td class="text-bold">Role</td>
+          <td>
+            <span class="text-gray colon-before text-capitalize"
+              >{role_name}</span
+            >
+          </td>
+        </tr>
+        <tr>
+          <td class="text-bold">Status</td>
+          <td>
+            <p class="colon-before">
+              <span class="tag tag-{ticket_status_tag_color}"
+                >{ticket_status}</span
+              >
+            </p>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="detail-content">
+      <h2 class="text-md text-gray">Item dan Transportasi</h2>
+      <hr />
+      <table class="with-row-spacing">
+        <tr>
+          <td class="text-bold">Waktu Estimasi Kedatangan</td>
+          <td>
+            <span class="text-gray colon-before">{request_at}</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-bold">Komoditas yang Dibawa</td>
+          <td>
+            <span class="text-gray colon-before"> {comodity_name} </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-bold">Nomor Polisi</td>
+          <td>
+            <span class="text-gray colon-before">{police_number}</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-bold">Berat atau Jumlah Barang</td>
+          <td>
+            <span class="text-gray colon-before">{total_item}</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-bold">Satuan Barang</td>
+          <td>
+            <span class="text-gray colon-before">{unit_of_item}</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="detail-content">
+      <h2 class="text-md text-gray">Lokasi Tujuan</h2>
+      <hr />
+      <table class="with-row-spacing">
+        <tr>
+          <td class="text-bold">Lokasi</td>
+          <td>
+            <span class="text-gray colon-before"> {location} </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="detail-content">
+      <h2 class="text-md text-gray">Dokumen</h2>
+      <hr />
+      <table class="with-row-spacing">
+        <tr>
+          <td class="text-bold">Surat Jalan / Delivery Order</td>
+          <td>
+            <span class="colon-before">
+              <a href="{delivery_order_url}">Surat Jalan.pdf</a>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-bold">Bill of Landing</td>
+          <td>
+            <span class="colon-before">
+              <a href="{bill_of_landing_url}">Bill of Landing (B/L).pdf</a>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-bold">Invoice</td>
+          <td>
+            <span class="colon-before">
+              <a href="{invoice_url}">Invoice.png</a>
+            </span>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-bold">Lainnya</td>
+          <td>
+            <span class="colon-before">
+              <a href="{other_url}">Lainnya.jpeg</a>
+            </span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

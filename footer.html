@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+
+      body {
+        margin: 0;
+        padding: 0;
+
+        font-family: "Plus Jakarta Sans", sans-serif;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0.01em;
+
+        background-color: #fff;
+        color: #5e6470;
+
+        text-align: center;
+      }
+
+      .text-red {
+        color: rgba(218, 41, 28, 1);
+      }
+
+      a {
+        color: rgba(218, 41, 28, 1);
+      }
+    </style>
+  </head>
+
+  <body onload="getPdfInfo()">
+    (<span id="curr_page"></span>)
+    <div class="text-red" style="margin-top: 8px">
+      Jl. Raya Manyar KM. 11, Manyar - Gresik 61151, East Java - Indonesia
+    </div>
+    <div style="margin-top: 8px">
+      <a href="https://www.jiipe.com">www.jiipe.com</a>
+    </div>
+
+    <script>
+      var pdfInfo = {};
+      var x = document.location.search.substring(1).split("&");
+      for (var i in x) {
+        var z = x[i].split("=", 2);
+        pdfInfo[z[0]] = unescape(z[1]);
+      }
+      function getPdfInfo() {
+        var page = pdfInfo.page || 1;
+        var pageCount = pdfInfo.topage || 1;
+        document.getElementById("curr_page").textContent = page;
+        document.getElementById("total_page").textContent = pageCount;
+      }
+    </script>
+  </body>
+</html>
