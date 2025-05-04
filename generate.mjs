@@ -18,4 +18,5 @@ wkhtmltopdf(html, {
   headerHtml: "header.html",
   footerHtml: "footer.html",
   enableLocalFileAccess: true,
+  userStyleSheet: "style.css",
 }).pipe(fs.createWriteStream("out.pdf"));
